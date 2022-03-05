@@ -1,0 +1,19 @@
+.sq-header {
+  &__logo {
+    width: 180px;
+
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  &__search {
+    .form-control {
+      min-width: 300px;
+    }
+  }
+}
+
+.sq-shadow {
+  box-shadow: $sq-shadow;
+}

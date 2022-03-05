@@ -1,0 +1,15 @@
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (min-width: #{$mobile-width}) and (max-width: #{$tablet-width - 1}) {
+    @content;
+  }
+}
+
+@function color ($variant) {
+  @return map-get($colors, $variant);
+}
