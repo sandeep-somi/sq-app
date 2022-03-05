@@ -127,11 +127,126 @@
 
 .sq-option-banner {
   height: 180px;
-  border-radius: 16px;
-  overflow: hidden;
+  border-radius: 8px;
+  @extend .sq-shadow;
   img {
     height: 100%;
     width: 100%;
     object-fit: fill;
+    border-radius: 8px;
+  }
+}
+
+.sq-option {
+  margin-top: 32px;
+  border-radius: 8px;
+  padding: 24px;
+  @extend .sq-shadow;
+  &:first-child {
+    margin-bottom: 32px;
+  }
+  &__specs {
+    &-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  &__titles {
+    h2 {
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: .4px;
+      margin: 0;
+      color: color(text-dark);
+    }
+    p {
+      font-size: 14px;
+      margin: 8px 0;
+      color: color(text-subtitle);
+    }
+  }
+  &__price {
+    text-align: right;
+    p {
+      margin: 0;
+      font-size: 14px;
+      color: color(text-primary);
+      font-weight: 600;
+    }
+  }
+}
+
+.sq-spliter {
+  border-bottom: 2px dashed color(text-placeholder);
+  margin: 20px 0;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  color: color(text-dark);
+  margin-bottom: 4px;
+  padding: 0 4px;
+}
+
+.sq-h2 {
+  font-size: 16px;
+  color: color(text-dark);
+  letter-spacing: 0.2px;
+}
+
+.sq-link {
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  color: color(text-primary);
+}
+
+.sq-accordion {
+  .accordion {
+    .accordion-header {
+      button {
+        padding: 16px 0;
+        border-color: none;
+        box-shadow: none;
+        background-color: #ffffff;
+        font-size: 14px;
+        color: color(text-inactive);
+      }
+    }
+    .accordion-body {
+      padding: 16px 0;
+    }
+  }
+}
+
+.sq-addon-item {
+  padding: 16px;
+  box-shadow: $sq-shadow;
+  border-radius: 8px;
+}
+
+.sq-cart {
+  border-radius: 16px;
+  box-shadow: $sq-shadow;
+  overflow: hidden;
+  &__header {
+    background-color: color(text-primary);
+    h2 {
+      font-size: 14px;
+      padding: 16px;
+      color: #ffffff;
+    }
+  }
+  &__body {
+    height: 400px;
   }
 }
