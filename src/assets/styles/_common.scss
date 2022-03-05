@@ -1,6 +1,6 @@
 .sq-header {
   &__logo {
-    width: 180px;
+    width: 160px;
 
     img {
       width: 100%;
@@ -8,12 +8,130 @@
     }
   }
   &__search {
-    .form-control {
-      min-width: 300px;
+    width: 300px;
+    position: relative;
+    margin-left: 16px;
+    &-has-clear {
+      .form-control {
+        padding-right: 42px;
+      }
+      span {
+        position: absolute;
+        left: auto;
+        right: 8px;
+        top: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        transform: rotate(45deg);
+        height: 26px;
+        width: 26px;
+        background: color(text-disabled);
+        color: color(text-danger);
+        text-align: center;
+        line-height: 20px;
+        border-radius: 50px;
+        padding: 2px;
+        cursor: pointer;
+      }
     }
   }
 }
 
 .sq-shadow {
   box-shadow: $sq-shadow;
+}
+
+.sq-page-title {
+  padding: 32px 0;
+  h2 {
+    margin: 0;
+    color: color(text-primary);
+    font-weight: 700;
+  }
+}
+
+.sq-home {
+  &__menu-wrapper {
+    padding: 0;
+  }
+}
+
+.sq-menu {
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    background-color: color(text-primary);
+    right: 0;
+    top: 0;
+    opacity: 0.5;
+  }
+
+  &__item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 16px 0;
+    padding-right: 16px;
+    cursor: pointer;
+    &:hover {
+      opacity: .8;
+    }
+    img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      transition: height 100ms, width 100ms ease-in-out;
+    }
+    span {
+      font-size: 12px;
+      margin-top: 8px;
+      color: color(text-primary);
+      transition: font-size 100ms ease-in-out;
+    }
+    opacity: .5;
+    &-active {
+      opacity: 1;
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+      span {
+        font-size: 14px;
+        margin-top: 8px;
+        color: color(text-primary);
+      }
+      &:hover {
+        opacity: 1;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        background-color: color(text-primary);
+        right: 0;
+        top: 0;
+        opacity: 1;
+        transition: all 100ms ease-in-out;
+      }
+    }
+  }
+}
+
+.sq-option-banner {
+  height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+  }
 }
