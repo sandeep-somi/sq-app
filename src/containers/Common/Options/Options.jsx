@@ -7,7 +7,7 @@ const Options = () => {
   const { options = [], subOptions = [] } = useSelector(state => state.options);
   const { activeCategory } = useSelector(state => state.categories);
 
-  const optionsToShow = () => {
+  const optionsToShow = () => { 
     return options.filter(option => option.category === activeCategory.label);
   }
 
