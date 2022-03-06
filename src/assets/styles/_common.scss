@@ -7,14 +7,17 @@
       object-fit: contain;
     }
   }
+
   &__search {
     width: 300px;
     position: relative;
     margin-left: 16px;
+
     &-has-clear {
       .form-control {
         padding-right: 42px;
       }
+
       span {
         position: absolute;
         left: auto;
@@ -43,10 +46,11 @@
 
 .sq-page-title {
   padding: 32px 0;
+
   h2 {
     margin: 0;
     color: color(text-primary);
-    font-weight: 700;
+    font-weight: 600;
   }
 }
 
@@ -58,6 +62,7 @@
 
 .sq-menu {
   position: relative;
+
   &:after {
     content: '';
     position: absolute;
@@ -79,37 +84,46 @@
     padding: 16px 0;
     padding-right: 16px;
     cursor: pointer;
+
     &:hover {
       opacity: .8;
     }
+
     img {
       width: 40px;
       height: 40px;
       object-fit: contain;
       transition: height 100ms, width 100ms ease-in-out;
     }
+
     span {
       font-size: 12px;
       margin-top: 8px;
       color: color(text-primary);
       transition: font-size 100ms ease-in-out;
     }
+
     opacity: .5;
+
     &-active {
       opacity: 1;
+
       img {
         width: 50px;
         height: 50px;
         object-fit: contain;
       }
+
       span {
         font-size: 14px;
         margin-top: 8px;
         color: color(text-primary);
       }
+
       &:hover {
         opacity: 1;
       }
+
       &:after {
         content: '';
         position: absolute;
@@ -129,6 +143,7 @@
   height: 180px;
   border-radius: 8px;
   @extend .sq-shadow;
+
   img {
     height: 100%;
     width: 100%;
@@ -142,15 +157,18 @@
   border-radius: 8px;
   padding: 24px;
   @extend .sq-shadow;
+
   &:first-child {
     margin-bottom: 32px;
   }
+
   &__specs {
     &-image {
       width: 120px;
       height: 120px;
       border-radius: 8px;
       overflow: hidden;
+
       img {
         width: 100%;
         height: 100%;
@@ -158,7 +176,9 @@
       }
     }
   }
+
   &__titles {
+    padding: 8px 16px 8px 36px;
     h2 {
       font-size: 22px;
       font-weight: 400;
@@ -166,14 +186,17 @@
       margin: 0;
       color: color(text-dark);
     }
+
     p {
       font-size: 14px;
       margin: 8px 0;
       color: color(text-subtitle);
     }
   }
+
   &__price {
     text-align: right;
+
     p {
       margin: 0;
       font-size: 14px;
@@ -184,7 +207,7 @@
 }
 
 .sq-spliter {
-  border-bottom: 2px dashed color(text-placeholder);
+  border-bottom: 1px dashed color(text-placeholder);
   margin: 20px 0;
 }
 
@@ -212,18 +235,23 @@ label {
 
 .sq-accordion {
   .accordion {
-    .accordion-header {
-      button {
-        padding: 16px 0;
-        border-color: none;
-        box-shadow: none;
-        background-color: #ffffff;
-        font-size: 14px;
-        color: color(text-inactive);
+    .accordion-item {
+      border: none;
+
+      .accordion-header {
+        button {
+          padding: 16px 0;
+          border-color: none;
+          box-shadow: none;
+          background-color: #ffffff;
+          font-size: 14px;
+          color: color(text-inactive);
+        }
       }
-    }
-    .accordion-body {
-      padding: 16px 0;
+
+      .accordion-body {
+        padding: 16px 0;
+      }
     }
   }
 }
@@ -232,20 +260,52 @@ label {
   padding: 16px;
   box-shadow: $sq-shadow;
   border-radius: 8px;
+  margin-bottom: 16px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__img {
+    height: 32px;
+    width: 32px;
+    margin: 0 16px 0 24px;
+    border-radius: 4px;
+    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &__price {
+    p {
+      margin: 0;
+      color: color(text-primary);
+      font-weight: 600;
+    }
+  }
 }
 
 .sq-cart {
   border-radius: 16px;
   box-shadow: $sq-shadow;
   overflow: hidden;
+  position: sticky;
+  top: 30px;
+
   &__header {
     background-color: color(text-primary);
+
     h2 {
       font-size: 14px;
       padding: 16px;
       color: #ffffff;
     }
   }
+
   &__body {
     height: 400px;
   }

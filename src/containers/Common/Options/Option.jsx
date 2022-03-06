@@ -1,10 +1,25 @@
 import React from 'react';
 import { Accordion, Button, Col, Form, Row } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+
+const getSubmenu = (labels, menus) => {
+  const submenu = [];
+  for (const label of labels) {
+    const menu = menus.hasOwnProperty(label) ? menus[label] : {};
+    submenu.push({
+      ...menu,
+      label: label,
+    });
+  }
+  return submenu;
+}
 
 const Option = ({ data = {} }) => {
   const sessions = data && data.sessionlist || [];
   const [showAddons, setShowAddons] = React.useState(false);
-
+  const { subOptions = [] } = useSelector(state => state.options);
+  const addons = getSubmenu(data.submenu || [], subOptions);
+  const shouldShowAddons = !!(data && data.submenu && data.submenu.length)
   return (
     <div className="sq-option">
       <Row>
@@ -16,13 +31,13 @@ const Option = ({ data = {} }) => {
         <Col md={8} className="sq-option__titles">
           <h2>{data.foodname}</h2>
           <p>{data.fooddescription}</p>
-          {!showAddons && <Button size="sm" onClick={() => setShowAddons(true)}>Add-ons</Button>}
+          {!showAddons && shouldShowAddons && <Button size="sm" onClick={() => setShowAddons(true)}>Add-ons</Button>}
         </Col>
         <Col md={2} className='sq-option__price'>
           <p>${(data.price || 0).toFixed(2)}</p>
         </Col>
       </Row>
-      {showAddons && <>
+      {showAddons && shouldShowAddons && <>
         <div className="sq-spliter"></div>
         <Row>
           <Col>
@@ -31,15 +46,30 @@ const Option = ({ data = {} }) => {
               <span className="sq-link" onClick={() => setShowAddons(false)}>Cancel</span>
             </div>
             <div className="sq-accordion">
-              <Accordion>
-                <Accordion.Header>Choose Topping</Accordion.Header>
-                <Accordion.Body>
-                  <div className="sq-addon-item">
-                    <Form.Check
+              <Accordion defaultActiveKey="0">
+                <Accordion.Item eventKey="0">
+                  <Accordion.Header>Choose Topping</Accordion.Header>
+                  <Accordion.Body>
+                    {addons && addons.map((addon, index) => {
+                      return (
+                        <div className="sq-addon-item d-flex align-items-center justify-content-between" key={index}>
+                          <div className="d-flex align-items-center">
+                            <Form.Check
 
-                    />
-                  </div>
-                </Accordion.Body>
+                            />
+                            <div className="sq-addon-item__img">
+                              <img src={addon.imageurl} alt={addon.label} />
+                            </div>
+                            <span>{addon.label}</span>
+                          </div>
+                          <div className="sq-addon-item__price">
+                            <p>${(addon.price || 0).toFixed(2)}</p>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </Accordion.Body>
+                </Accordion.Item>
               </Accordion>
             </div>
           </Col>
@@ -52,6 +82,7 @@ const Option = ({ data = {} }) => {
           <label>Quantity</label>
           <Form.Control
             placeholder='Qty'
+            type="number"
           />
         </Col>
         <Col md={6}>
